@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <title>De Zoo Movies</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        .hero{
+            font-size: x-large;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            color: rgb(252, 248, 248);
+            background-color: #323b66;
+            padding: 13px;
+            position: relative;
+        }
+        .hero span{
+            background-color: goldenrod;
+        }
+        .gallery{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            /* Hide scrollbar but keep functionality */
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;     /* Firefox */
+        }
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .gallery::-webkit-scrollbar {
+            display: none;
+        }
+        .background-color{
+            background-color: rgb(18, 19, 20);
+        }
+        .img-box{
+            width: 130px;
+            height: 450px;
+            margin: 9px;
+            border-radius: 50px;
+            background: url(photos/Promo-Website-Website\ portrait\ content\ $$8$$.jpeg);
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            transition: width 0.5s;
+            flex-shrink: 0;
+        }
+        .img-box:nth-child(2){
+            background: url(photos/Soori-Garudan-Movie-First-Look-Poster-HD.jpg);
+            background-size: cover;
+            background-position: center;
+        }
+        .img-box:nth-child(3){
+            background: url(photos/MV5BZTU5YjhlOGQtNDA4NC00ODMzLThjNjYtYWJlMDU1ZGQ3OWM5XkEyXkFqcGdeQXVyMTUyNjIwMDEw._V1_.jpg);
+            background-size: cover;
+            background-position: center;
+        }
+        .img-box:nth-child(4){
+            background: url(photos/Promo-Website-Website\ portrait\ content\ $$6$$.jpeg);
+            background-size: cover;
+            background-position: center;
+        }
+        .img-box:nth-child(5){
+            background: url(photos/Promo-Website-Website\ portrait\ content\ $$10$$.jpeg);
+            background-size: cover;
+            background-position: center;
+        }
+        .img-box:nth-child(6){
+            background: url(photos/MV5BMTg4YmUzZjEtYzYxNC00MDczLWFhMjAtNzA4NjBlMGQ5N2E4XkEyXkFqcGdeQXVyMTUzNTgzNzM0._V1_.jpg);
+            background-size: cover;
+            background-position: center;
+        }
+        .img-box:nth-child(7){
+            background: url(photos/Promo-Website-Website\ portrait\ content\ $$11$$.jpeg);
+            background-size: cover;
+            background-position: center;
+        }
+        .img-box:nth-child(8){
+            background: url(photos/MV5BZjk1MWFmZjUtY2QyMy00ZmFlLTljYmQtZmNiNDI2Yjk2NGNjXkEyXkFqcGdeQXVyMTUzNTgzNzM0._V1_.jpg);
+            background-size: cover;
+            background-position: center;
+        }
+        .img-box span{
+            color: #f5cdcd;
+            position: absolute;
+            bottom: 0;
+            font-size: x-large;
+            font-family: sans-serif;
+            left: 40px;
+            opacity: 0;
+            transition: bottom 0.5s opacity 0.5s;
+        }
+        .img-box:hover{
+            width: 480px;
+            cursor: pointer;
+
+        }
+        .img-box:hover span{
+            opacity: 1;
+            bottom: 25px;
+        }
+        .Search{
+            width: 400px;
+            padding: 8px 19px 8px 45px;
+            border: white solid 2px;
+            font-size: 18px;
+            border-radius: 25px;
+            position: absolute;
+            top: 11px;
+            left: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-position: 2% 50%;
+            background-repeat: no-repeat;
+            background-size: 30px;
+            background-image: url(search_FILL0_wght400_GRAD0_opsz24.png);
+            background-color: white;
+            
+
+        }
+        .Search:hover input{
+            width: 500px;
+            outline: none;
+            border: none;
+
+        }
+        .Search input{
+            width: 100px;
+            outline: none;
+            border: none;
+            font-weight: 500;
+            transition: 0.8s;
+            background: transparent;
+        }
+        .Search a .fas{
+            color: rgb(72, 231, 157);
+            font-size: 18px;
+        }
+        nav{
+            width: 500px;
+            text-align: center;
+            top: 15px;
+            left: 850px;
+            justify-content: center;
+            position: absolute;
+            
+        }
+        nav ul li{
+            width: 100px;
+            list-style: none;
+            display: inline-block;
+            margin-left: 15px; 
+            position: relative;
+        }
+
+        nav ul li a{
+            text-decoration: none;
+            color:#fff;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 18px;
+            transform: translate(-50%,-50%);
+            transition-duration: .5s;    
+        }
+        nav ul li a:hover{
+           outline: #f18930; 
+        }    
+
+        .addbutton-popup{
+            width: 60px;
+            height: 30px;
+            text-align: center;
+            background: transparent;
+            border-radius: 3px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-size: 1.1em;
+            font-weight: 300;
+            cursor: pointer;
+            margin-left: 30px;
+            color: #fff;
+            outline: none;
+            border: 3px solid #fff;
+            transition: 0.5s;  
+        }
+        .addbutton-popup:hover{
+            background: #fff;
+            color: #162938; 
+        }
+        .wrapper{
+            width: 400px;
+            left: 450px;
+            height: 450px;
+            top: 90px;
+            background-color: #387896;
+            border: 3px solid rgba(248, 248, 248, 0.5);
+            color: #fff;
+            backdrop-filter: blur(30px);
+            box-shadow: 0 0 30px rgb(70, 56, 56);
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            border-radius: 19px;
+            display: flex;
+            overflow: hidden;
+            transform: scale(0);
+            transition: transform .5s ease, height .2s ease;
+
+        }
+
+        .wrapper.active-popup{
+            transform: scale(1);
+
+        }
+        .wrapper.active{
+            height: 510px;
+
+        }
+
+        .wrapper .form-box {
+            width: 100%;
+            padding: 40px;
+
+        }
+
+        .wrapper .form-box.login{
+            transition: transform .18s ease;
+            transform: translateX(0);
+        }
+        .wrapper.active .form-box.login{
+            transition: none;
+            transform: translateX(-400px);
+        }
+
+        .wrapper .form-box.register{
+            position: absolute;
+            width: 330px;
+            transition: none;
+            transform: translateX(400px);
+        }
+
+        .wrapper.active .form-box.register{
+            transition: transform .18s ease;
+            transform: translateX(0);
+        }
+        .wrapper .icon-close{
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 45px;
+            height: 45px;
+            background-color: #050505;
+            font-size: 2em;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom-left-radius: 20px;
+            cursor: pointer;
+            z-index: 1;
+        }
+        .form-box h2{
+            font-size: 36px;
+            text-align: center;
+            color: #f5d4d467;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+        }
+        .input-box {
+            position: relative;
+            width: 100%;
+            height: 50px;
+            border-bottom: 2px solid #adb4b9;
+            margin: 30px 0;
+        }
+        .input-box label{
+            position: absolute;
+            top: 50%;
+            left: 5px;
+            transform: translateY(-50%);
+            font-size: 1em;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: #f0f3f5;
+            font-weight: 500;
+            pointer-events: none;
+            transition: .5s;
+        }
+        .input-box input:focus~label,.input-box input:valid~label {
+            top: -6px;
+        }
+        .input-box input{
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            border: none;
+            outline: none;
+        }
+        .input-box .icon{
+            position: absolute;
+            right: 8px;
+            font-size: 1.2em;
+            background: none;
+            color: #ece4e4;
+            line-height: 45px;
+        }
+
+
+        .remember-foret {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13.5px;
+            color: #fff1f1;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            margin: -15px 0 15px;
+
+        }
+
+        .remember-foret label input {
+            accent-color: #f3eaea;
+            margin-right: 3px;
+
+        }
+
+        .remember-foret a {
+            color: #cfc7c7;
+            text-decoration: none;
+
+        }
+        .remember-foret a:hover{
+            text-decoration: underline;
+        }
+
+        .btn{
+            width: 100%;
+            height: 45px;
+            background: #222121;
+            border: none;
+            outline: none;
+            border-radius: 30px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            box-shadow: 0 0 10px rgba( 0, 0, 0, .1);
+            cursor: pointer;
+            font-size: 20px;
+            color: #b9b4b4;
+            font-weight: 600;
+
+        }
+        .Login-register{
+            font-size: 14.5px;
+            color: #e4dcdc;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            text-align: center;
+            margin: 19px 0 15px;
+        }
+        .Login-register p a{
+            color: #d8cbcb;
+            text-decoration: none;
+            font-weight: 600;
+
+        }
+        .Login-register p a:hover{
+            text-decoration: underline;
+        }
+        .color-line2{
+            font-size: x-large;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            color: rgb(252, 248, 248);
+            background-color: #161616;
+            padding: 13px;
+            
+        }
+        .gallery1{
+            width: 100%;
+            display: flex;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scroll-behavior: smooth;
+            padding: 10px 0;
+            /* Hide scrollbar but keep functionality */
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;     /* Firefox */
+        }
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .gallery1::-webkit-scrollbar {
+            display: none;
+        }
+        .gallery1 .image {
+            flex: 0 0 auto;
+            margin: 0 10px;
+        }
+        .gallery1 img{
+            width: 200px;
+            transition: 0.4s;
+            border-radius: 8px;
+        }
+        .gallery1 img:hover{
+            transform: scale(0.9);
+            z-index: 2;
+        }
+        h3{
+            text-align: center;
+            font-size: medium;
+            font-family: sans-serif;
+            color: #f0f3f5;
+            margin-top: 8px;
+        }
+
+        .background-color1{
+            background-color: #1f2338;
+        }
+        .hero1{
+            font-size: x-large;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            color: rgb(252, 248, 248);
+            background-color: #1f2338;
+            text-align: center;
+            padding: 10px;
+            
+        }
+        .hero1 span{
+            background-color: darkorange;
+        }
+        .head1{
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 16px;
+            color: #e4dcdc;
+        }
+        footer{
+            background: #1f2338;
+            padding-top: 45px;
+        }
+        .container{
+            width: 1140px;
+            margin: auto;
+            display: flex;
+            justify-content: center;
+        }
+        .footer-content{
+            width: 33.3%;
+        }
+        h4{
+            font-size: 24px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .footer-content p{
+            width: 190px;
+            margin: auto;
+            padding: 7px;
+        }
+        .footer-content ul{
+            text-align: center;
+        }
+        .list{
+            padding: 0;
+        }
+        .list li{
+            width: auto;
+            text-align: center;
+            list-style-type: none;
+            padding: 7px;
+            position: relative;
+        }
+        .list li::before{
+            content: '';
+            position: absolute;
+            transform: translate(-50%,-50%);
+            left: 50%;
+            top: 100%;
+            width: 0;
+            height: 2px;
+            color: #fff;
+            background: #f18930;
+            transition-duration: .5s;
+
+        }
+        .list li:hover::before{
+            width: 50px;
+
+        }
+        .social-icons{
+            text-align: center;
+            padding: 0;
+        }
+        .social-icons li{
+            display: inline-block;
+            text-align: center;
+            padding: 5px;
+        }
+        .social-icons i{
+            color: white;
+            font-size: 25px;
+        }
+        a{
+            text-decoration: none;
+        }
+        a:hover{
+            color: #f18930;
+        }
+        .social-icons i:hover{
+            color: #f18930;
+        }
+        .bottom-bar{
+            background: #f18930;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 50px;
+        }
+        .bottom-bar p{
+            color: #343434;
+            margin: 0;
+            font-size: 16px;
+            padding: 7px;
+        }
+        
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 100;
+        }
+
+        /* Media Queries for Responsive Design */
+        @media screen and (max-width: 768px) {
+            /* Show mobile menu button */
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            /* Hide desktop navigation by default on mobile */
+            nav {
+                display: none;
+                width: 100%;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                background-color: #323b66;
+                z-index: 99;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
+            
+            /* When nav is active (toggled by JS) */
+            nav.active {
+                display: block;
+            }
+            
+            /* Adjust nav items for mobile */
+            nav ul li {
+                display: block;
+                width: 100%;
+                margin: 0;
+                padding: 15px 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            
+            /* Center the sign button */
+            .addbutton-popup {
+                margin: 15px auto;
+                display: block;
+            }
+            
+            /* Adjust search bar position */
+            .Search {
+                width: 70%;
+                left: 15%;
+                top: 15px;
+            }
+            
+            /* Adjust gallery for mobile */
+            .gallery {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                justify-content: flex-start;
+            }
+            
+            .img-box {
+                width: 100px;
+                height: 350px;
+                margin: 5px;
+            }
+            
+            .img-box:hover {
+                width: 200px;
+            }
+            
+            /* Adjust movie galleries */
+            .gallery1 {
+                width: 100%;
+                padding: 5px 0;
+            }
+            
+            .gallery1 img {
+                width: 150px;
+            }
+            
+            /* Adjust footer for mobile */
+            .container {
+                width: 100%;
+                flex-direction: column;
+            }
+            
+            .footer-content {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+            
+            /* Adjust login modal for mobile */
+            .wrapper {
+                width: 90%;
+                left: 5%;
+                height: auto;
+                min-height: 450px;
+            }
+        }
+    </style>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/1165876da6.js" crossorigin="anonymous"></script>
+    </head>
+    <body>     
+        <div class="hero">
+            <span>De Zoo</span> Movies
+            <!-- Mobile Menu Button -->
+            <div class="mobile-menu-btn" id="mobile-menu-btn"><i class="fas fa-bars"></i></div>
+        </div>     
+        <div class="Search">
+               <input type="text" placeholder="Search Movies">
+        </div>                           
+       <nav id="main-nav">
+        <ul>
+            <li><a href="#">Movies</a></li>
+            <li><a href="#">Popular</a></li>
+            <li><a href="#">TV Shows</a></li>
+            <button class="addbutton-popup" id="add-login-button">SIGN</button>
+        </ul>
+       </nav>
+       <div class="background-color">
+       <div class="gallery">
+        <div  class="img-box"><span>Kalki 2898AD</span></div>
+        <div  class="img-box"><span>Garudan</span></div>
+        <div  class="img-box"><span>Shaitaan</span></div>
+        <div  class="img-box"><span>Aavesham</span></div>
+        <div  class="img-box"><span>Premalu</span></div>
+        <div  class="img-box"><span>The Goat Life</span></div>
+        <div  class="img-box"><span>Indian 2</span></div>
+        <div  class="img-box"><span>Aranmanai 4</span></div>
+       </div> 
+        <div class="wrapper">
+             <span class="icon-close">
+                <ion-icon name="close-outline"></ion-icon>
+             </span>
+           
+             <div class="form-box login">
+                <h2>Login</h2>
+                <form action="connect.php" method="post">
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                        <input type="email" required id="email" name="email" />
+                        <label>Email</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
+                        <input type="password" required id="password" name="password" />
+                        <label>password</label>
+                    </div>
+                    <div class="remember-foret">
+                         <label><input type="checkbox">
+                        Remember me</label>
+                        <a href="#">Forgot password?</a>
+                    </div> 
+                    <button type="submit" class="btn">Login</button>
+                    <div class="Login-register">
+                        <p>Don't have an account? <a href="#" class="register-link">Register</a></p>
+                    </div>   
+                </form>
+            </div>
+
+            <div class="form-box register">
+                <h2>Registration</h2>
+                <form action="#">
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="person-circle-outline"></ion-icon></span>
+                        <input type="text" required id="text" name="text">
+                        <label>username</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                        <input type="email" required id="email" name="email" >
+                        <label>Email</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
+                        <input type="password" required id="password" name="password" >
+                        <label>password</label>
+                    </div>
+                    <div class="remember-foret">
+                         <label><input type="checkbox"> I agree to the terms & conditoins
+                        Remember me</label>
+                    </div> 
+                    <button type="submit" class="btn">Register</button>
+                    <div class="Login-register">
+                        <p>Already have an account? <a href="#" class="login-link">Login</a></p>
+                    </div>   
+                </form>
+            </div>
+        </div>
+
+        <div class="color-line2">Top Movies<span> ></span></div>
+        <div class="gallery1">
+            <a href="file:///E:/Movie%20web/Garudan.html"><div class="image"><img src="photos/Soori-Garudan-Movie-First-Look-Poster-HD.jpg"></a><h3>Garudan</h3></div>
+            <div class="image"><img src="photos/474147432718.jpg"><h3>PT Sir</h3></div>
+            <div class="image"><img src="photos/MV5BZjk1MWFmZjUtY2QyMy00ZmFlLTljYmQtZmNiNDI2Yjk2NGNjXkEyXkFqcGdeQXVyMTUzNTgzNzM0._V1_.jpg"><h3>Aranmanai 4</h3></div>
+            <div class="image"><img src="photos/Promo-Website-Website portrait content (2).jpeg"><h3>The Family Star</h3></div>
+            <div class="image"><img src="photos/Promo-Website-Website portrait content (1).jpeg"><h3>Rasavathi</h3></div>
+            <div class="image"><img src="photos/Promo-Website-Website portrait content (3).jpeg"><h3>Romeo</h3></div>
+            <div class="image"><img src="photos/Promo-Website-Website portrait content (4).jpeg"><h3>Marakkuma Nenjam</h3></div>
+            <div class="image"><img src="photos/Promo-Website-Website portrait content (5).jpeg"><h3>The Boys</h3></div>
+            <div class="image"><img src="photos/Promo-Website-Website portrait content.jpeg"><h3>Manjummel boys</h3></div>
+            <div class="image"><img src="photos/810755406935.jpg"><h3>Star</h3></div>
+        </div>
+        <div class="color-line2">2024 Movies<span> ></span></div>
+        <div class="gallery1">
+            <div class="image"><img src="photos/Promo-Website-Website portrait content (8).jpeg"><h3>Kalki 2898</h3></div>
+            <div class="image"><img src="photos/Promo-Website-Website portrait content (10).jpeg"><h3>Premalu</h3></div>
+            <div class="image"><img src="photos/Promo-Website-Website portrait content (6).jpeg"><h3>Aavesham</h3></div>
+            <div class="image"><img src="photos/Promo-Website-Website portrait content (9).jpeg"><h3>The Fall Guy</h3></div>
+            <div class="image"><img src="photos/Promo-Website-Website portrait content (11).jpeg"><h3>Indian 2</h3></div>
+            <div class="image"><img src="photos/FURIOSA-a-mad-max-saga.jpg"><h3>Furiosa a Mad Max Saga</h3></div>
+            <div class="image"><img src="photos/Promo-Website-Website portrait content (7).jpeg"><h3>Godzilla x Kong The New Empire</h3></div>
+            <div class="image"><img src="photos/Promo-Website-Website portrait content (5).jpeg"><h3>The Boys</h3></div>
+            <div class="image"><img src="photos/Promo-Website-Website portrait content.jpeg"><h3>Manjummel boys</h3></div>
+            <div class="image"><img src="photos/810755406935.jpg"><h3>Star</h3></div>
+        </div>
+        <div class="color-line2">Popular Movies<span> ></span></div>
+        <div class="gallery1">
+            <div class="image"><img src="photos/Promo-Website-Website portrait content (16).jpeg"><h3>Raayan</h3></div>
+            <div class="image"><img src="photos/Promo-Website-Website portrait content (15).jpeg"><h3>Rathnam</h3></div>
+            <div class="image"><img src="photos/Promo-Website-Website portrait content (14).jpeg"><h3>Yodha</h3></div>
+            <div class="image"><img src="photos/Promo-Website-Website portrait content (17).jpeg"><h3>Munjya</h3></div>
+            <div class="image"><img src="photos/Promo-Website-Website portrait content (19).jpeg"><h3>Maharaja</h3></div>
+            <div class="image"><img src="photos/MV5BYTYyODhlODktYjUzNC00NjUyLWI1MzYtNmI0MTY3YTUxYjY2XkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_FMjpg_UX1000_.jpg"><h3>Civil War</h3></div>
+            <div class="image"><img src="photos/Promo-Website-Website portrait content (20).jpeg"><h3>Anyone ButYou</h3></div>
+            <div class="image"><img src="photos/MV5BZThiNmEzOTctOGNkZS00OGVmLWJlMWUtNzBlNWE1ODNhMzBjXkEyXkFqcGdeQXVyMTUzNTgzNzM0._V1_FMjpg_UX1000_.jpg"><h3>Hit List</h3></div>
+            <div class="image"><img src="photos/Promo-Website-Website portrait content (13).jpeg"><h3>Deadpool&Wolverine</h3></div>
+            <div class="image"><img src="photos/Promo-Website-Website portrait content (12).jpeg"><h3>Venom</h3></div>
+        </div>
+        <div class="color-line2">HollyWood Movies<span> ></span></div>
+        <div class="gallery1">
+            <div class="imgae"><img src="photos/Promo-Website-Website portrait content (12).jpeg"><h3>Venom</h3></div>
+            <div class="image"><img src="photos/Promo-Website-Website portrait content (13).jpeg"><h3>Deadpool&Wolverine</h3></div>
+            <div class="image"><img src="photos/MV5BYTYyODhlODktYjUzNC00NjUyLWI1MzYtNmI0MTY3YTUxYjY2XkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_FMjpg_UX1000_.jpg"><h3>Civil War</h3></div>
+            <div class="image"><img src="photos/Promo-Website-Website portrait content (18).jpeg"><h3>Animal</h3></div>
+            <div class="image"><img src="photos/Promo-Website-Website portrait content (17).jpeg"><h3>Munjya</h3></div>
+            <div class="image"><img src="photos/Promo-Website-Website portrait content (9).jpeg"><h3>The Fall Guy</h3></div>
+            <div class="image"><img src="photos/Promo-Website-Website portrait content (7).jpeg"><h3>Godzilla x Kong The New Empire</h3></div>
+            <div class="image"><img src="photos/FURIOSA-a-mad-max-saga.jpg"><h3>Furiosa a Mad Max Saga</h3></div>
+            <div class="image"><img src="photos/Promo-Website-Website portrait content.jpeg"><h3>Manjummel boys</h3></div>
+            <div class="image"><img src="photos/810755406935.jpg"><h3>Star</h3></div>
+        </div>
+        </div>
+        <div class="background-color1">
+        <div class="hero1"><span>De Zoo</span> Movies</div>
+        <div class="head1">
+        <footer>
+        <div class="container">
+            <div class="footer-content">
+                <h4>Contact Us</h4>
+                <p>Email:vaithiy220@gmail.com</p>
+                <p>phone:+91 134567890</p>
+            </div>
+            <div class="footer-content">
+                <h4>Quick Link</h4>
+                 <ul class="list">
+                    <li><a href="">Home</a></li>
+                    <li><a href="">About</a></li>
+                    <li><a href="">Service</a></li>
+                    <li><a href="">Contact</a></li>
+                 </ul>
+            </div>
+            <div class="footer-content">
+                <h4>Follow us</h4>
+                <ul class="social-icons">
+                 <li><a href=""><i class="fab fa-facebook"></i></a></li>
+                 <li><a href=""><i class="fab fa-instagram"></i></a></li>
+                 <li><a href=""><i class="fab fa-twitter"></i></a></li>
+                 <li><a href=""><i class="fab fa-youtube"></i></a></li>
+                </ul>
+            </div>
+        </div>
+            <div class="bottom-bar">
+                <p>&copy; 2024 your company . All rights reserved</p>
+            </div>
+        
+        </footer>
+        </div>
+        </div>  
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const wrapper = document.querySelector('.wrapper');
+                const loginlink = document.querySelector('.login-link');
+                const registerlink = document.querySelector('.register-link');
+                const buttonpopup = document.querySelector('.addbutton-popup');
+                const iconclose = document.querySelector('.icon-close');
+                
+                if (registerlink) {
+                    registerlink.addEventListener('click', ()=> {
+                        wrapper.classList.add('active');
+                    });
+                }
+                
+                if (loginlink) {
+                    loginlink.addEventListener('click', ()=> {
+                        wrapper.classList.remove('active');
+                    });
+                }
+                
+                if (buttonpopup) {
+                    buttonpopup.addEventListener('click', ()=> {
+                        wrapper.classList.add('active-popup');
+                    });
+                }
+                
+                if (iconclose) {
+                    iconclose.addEventListener('click', ()=> {
+                        wrapper.classList.remove('active-popup');
+                    });
+                }
+                
+                // Mobile Menu Functionality
+                const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+                const mainNav = document.getElementById('main-nav');
+                
+                if (mobileMenuBtn && mainNav) {
+                    // Toggle mobile menu when button is clicked
+                    mobileMenuBtn.addEventListener('click', function() {
+                        mainNav.classList.toggle('active');
+                        
+                        // Toggle icon between bars and times
+                        const icon = mobileMenuBtn.querySelector('i');
+                        if (icon.classList.contains('fa-bars')) {
+                            icon.classList.remove('fa-bars');
+                            icon.classList.add('fa-times');
+                        } else {
+                            icon.classList.remove('fa-times');
+                            icon.classList.add('fa-bars');
+                        }
+                    });
+                    
+                    // Close mobile menu when a link is clicked
+                    const navLinks = mainNav.querySelectorAll('a');
+                    navLinks.forEach(link => {
+                        link.addEventListener('click', function() {
+                            if (window.innerWidth <= 768) {
+                                mainNav.classList.remove('active');
+                                
+                                // Reset icon to bars
+                                const icon = mobileMenuBtn.querySelector('i');
+                                icon.classList.remove('fa-times');
+                                icon.classList.add('fa-bars');
+                            }
+                        });
+                    });
+                }
+            });
+        </script>
+    </body>
+</html>
